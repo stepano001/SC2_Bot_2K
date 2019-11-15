@@ -47,8 +47,8 @@ async def zealotAndArmy(self):
     for gw in self.structures(UnitTypeId.GATEWAY).ready.idle:
         if self.can_afford(UnitTypeId.DARKTEMPLAR) and len(self.structures(UnitTypeId.DARKSHRINE)) != 0:
             self.do(gw.train(UnitTypeId.DARKTEMPLAR), subtract_cost=True, subtract_supply=True)
-        elif self.can_afford(UnitTypeId.ADEPT) and len(self.structures(UnitTypeId.CYBERNETICSCORE)) != 0:
-            self.do(gw.train(UnitTypeId.ADEPT), subtract_cost=True, subtract_supply=True)
+        elif self.can_afford(UnitTypeId.STALKER) and len(self.structures(UnitTypeId.CYBERNETICSCORE)) != 0:
+            self.do(gw.train(UnitTypeId.STALKER), subtract_cost=True, subtract_supply=True)
         elif self.can_afford(UnitTypeId.ZEALOT):
             self.do(gw.train(UnitTypeId.ZEALOT), subtract_cost=True, subtract_supply=True)
 
@@ -68,10 +68,13 @@ async def ATTACK_FOR_AIUR(self):
     if self.supply_army > 30:
         for z in self.units(UnitTypeId.ZEALOT):
             self.do(z.attack(self.enemy_start_locations[0]))
-        for a in self.units(UnitTypeId.ADEPT):
-            self.do(a.attack(self.enemy_start_locations[0]))
+        for s in self.units(UnitTypeId.STALKER):
+            self.do(s.attack(self.enemy_start_locations[0]))
         for dt in self.units(UnitTypeId.DARKTEMPLAR):
             self.do(dt.attack(self.enemy_start_locations[0]))
+
+
+
 
 
 
